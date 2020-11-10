@@ -1,0 +1,6 @@
+[submodule "ext/libigl"]
+	path = ext/libigl
+	url = https://github.com/libigl/libigl.git
+[submodule "ext/pmp"]
+	path = ext/pmp
+	url = https://github.com/pmp-library/pmp-library.git
