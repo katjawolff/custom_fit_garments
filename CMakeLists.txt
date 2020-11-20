@@ -113,11 +113,11 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 # Cholmod
-if(UNIX AND NOT APPLE)
-    include_directories("/home/katja/Desktop/SuiteSparse/include/")
-    add_definitions(-DHAVE_CHOLMOD)
-    target_link_libraries(${PROJECT_NAME} /home/katja/Desktop/SuiteSparse/lib/libcholmod.so)
-endif()
+#if(UNIX AND NOT APPLE)
+#    include_directories("/path/to/SuiteSparse/include/")
+#    add_definitions(-DHAVE_CHOLMOD)
+#    target_link_libraries(${PROJECT_NAME} /path/to/SuiteSparse/lib/libcholmod.so)
+#endif()
 
 # deal with experimental_filesystem
 if(WIN32)
@@ -130,7 +130,7 @@ endif()
 
 
 # fix cut meshes extra executable
-add_executable("fix_cut_meshes" fix_cut_meshes/main.cpp)
-target_link_libraries("fix_cut_meshes" igl::core)
+# add_executable("fix_cut_meshes" fix_cut_meshes/main.cpp)
+# target_link_libraries("fix_cut_meshes" igl::core)
 
 
