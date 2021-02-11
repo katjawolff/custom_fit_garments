@@ -299,14 +299,15 @@ int main(int argc, char* argv[]) {
                     string folder_path = igl::file_dialog_save();
                     igl::writeOBJ(folder_path, U, Fg);
 
+                    /* Use this code to safe OFF file with color coded stretch
                     VectorXd S = clo->ComputeStretchPerTriangle();  // S(f) should be one -> bigger: stretch, smaller: compression
                     MatrixXd C(U.rows(), 3);
                     vector< vector<int> > vf_adj;
                     createVertexFaceAdjacencyList(Fg, vf_adj);
                     for (int v = 0; v < U.rows(); v++) {
                         C.row(v) = Vector3d::Zero();
-                        for (int f = 0; f < vf_adj[v].size(); f++) {
-                            double y = (S(vf_adj[v][f]) - 1.) * 3.;
+                        for (int f = 0; f < vf_adj[v].size(); f++) {                         
+                            double y =  (S.size() > 0) ? (S(vf_adj[v][f]) - 1.) * 3. : 0;
                             double r = max(min(1.0 + y, 1.), 0.);
                             double g = max(min(1. - y, 1.), 0.);
                             C.row(v) += Vector3d(r, g, 0.0) * 255.;
@@ -314,6 +315,7 @@ int main(int argc, char* argv[]) {
                         C.row(v) /= vf_adj[v].size();
                     }
                     igl::writeOFF(folder_path, U, Fg, C);
+                    */
                 }
             }
             if (ImGui::Button("Save Mannequin", ImVec2(gui_w - gui_p, 0))) {
